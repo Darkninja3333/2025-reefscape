@@ -10,10 +10,16 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 public class CoralClaw extends SubsystemBase {
   // pour les neo utiliser revlib et spark max ex: private CANSparkMax m_exemple = new
   // CANSparkMax(kidexemple);
-  public CoralClaw() {}
+  public CoralClaw() {
+// initialize the NEOs of/and the Claw of the robot. :D
+  }
 
   @Override
-  public void periodic() {}
+  public void periodic() {
 
-  public void intake() {}
+  }
+
+  public void intake() {
+// make a command that could intake the coral. :)
+  }
 }
