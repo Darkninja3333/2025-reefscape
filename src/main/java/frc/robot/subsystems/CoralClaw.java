@@ -4,21 +4,29 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import com.revrobotics.spark.SparkMax;
+import com.revrobotics.spark.SparkLowLevel.MotorType;
+
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
+
 /** 2 neo one controls elevation and one closes pinchers * */
 public class CoralClaw extends SubsystemBase {
   // pour les neo utiliser revlib et spark max ex: private CANSparkMax m_exemple = new
   // CANSparkMax(kidexemple);
-  SparkMax m_ElevationNeo = new SparkMax(0, SparkMax.MotorType.kBrushless);
-  public CoralClaw() {
-// initialize the NEOs of/and the Claw of the robot. :D
-    
-}
+  private SparkMax m_ElevationNeo = new SparkMax(0, MotorType.kBrushless);
+  private SparkMax m_PinchNeo = new SparkMax(1, MotorType.kBrushless);
+  
+  public void IntakeSetAngle(double angle) {
+    m_ElevationNeo.set(angle);
+  }
 
+  public void IntakeSetSpeed(double speed) {
+    m_PinchNeo.set(speed);
+  }
+  
   @Override
   public void periodic() {
-
+    
   }
 
   public void intake() {
