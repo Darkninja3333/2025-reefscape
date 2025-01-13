@@ -4,10 +4,13 @@
 
 package frc.robot.subsystems;
 
+import static edu.wpi.first.units.Units.Degree;
+
 import com.revrobotics.spark.SparkMax;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants.AlgaeCoralStand;
 
 /** 2 neo one controls elevation and one closes pinchers * */
 public class CoralClaw extends SubsystemBase {
@@ -23,13 +26,17 @@ public class CoralClaw extends SubsystemBase {
   public void IntakeSetSpeed(double speed) {
     m_PinchNeo.set(speed);
   }
-  
+
   @Override
   public void periodic() {
     
   }
 
-  public void intake() {
-// make a command that could intake the coral. :)
+public void intake() {
+  // make a command that could intake the coral. :)
+  if (Degree == 0) {
+    m_ElevationNeo.getangle(90);
+    m_PinchNeo.set(50);
   }
+}
 }
