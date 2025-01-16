@@ -29,13 +29,15 @@ public class CoralClaw extends SubsystemBase {
     m_PinchNeo.set(speed);
   }
 
-  if(m_ElevationEncoder.getPosition()){
-    m_PinchNeo.set(1);
+  public void checkElevation() {
+    if(m_ElevationEncoder.getPosition() == 0) {
+      m_PinchNeo.set(1);
+    }
   }
 
-public void intake() {
-  // make a command that could intake the coral. :) 
-  m_ElevationEncoder.getPosition();
-  m_PinchNeo.get();
-}
+  public void intake() {
+    // make a command that could intake the coral. :) 
+    m_ElevationEncoder.getPosition();
+    m_PinchNeo.get();
+  }
 }
