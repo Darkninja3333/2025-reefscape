@@ -248,18 +248,12 @@ public final class Constants {
     // TODO: modify angles and speeds
 
     // elbow angles in º
-    public static final double kL1Angle = 0.0;
     public static final double kHandoffAngle = 0.0;
     public static final double kIntakeAngle = 0.0;
 
-    // wrist angles in º
-    public static final double kShootAngle = 0.0;
-    public static final double kNormalAngle = 0.0;
-
-    // wheel speeds
-    public static final double kIntakeSpeed = 0.0;
-    public static final double kShootSpeed = 0.0;
-    public static final double kStopSpeed = 0.0;
+    // wrist angles
+    public static final double Openposition = 0.6;
+    public static final double Closedposition = 0.0;
   }
 
   public static class AlgaeIntakeVariables {

@@ -7,6 +7,8 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Subsystem;
 import frc.robot.RobotContainer;
+import frc.robot.subsystems.CoralClaw.ClawPosition;
+import frc.robot.subsystems.CoralClaw.ClawState;
 
 // spotless:off
 /**
@@ -93,6 +95,7 @@ public class IntakeCmd extends Command {
          * this should : 1. runOnce place the coral intake in intake angles | 2. place the elevator
          * in handoff position
          */
+        RobotContainer.m_coralClaw.clawCommand(ClawState.CLOSE, ClawPosition.HANDOFF);
         break;
       case CoralFeeder:
         /** this should : 1. lift the elevator to feeder height */
@@ -116,6 +119,10 @@ public class IntakeCmd extends Command {
         break;
       case AlgaeGround:
         /** this should : 1. run wheel intake speed until limit switch is true */
+        RobotContainer.m_coralClaw
+            .clawCommand(ClawState.OPEN, ClawPosition.INTAKE)
+            .andThen(RobotContainer.m_coralClaw.clawCommand(ClawState.CLOSE, ClawPosition.INTAKE))
+            .andThen(RobotContainer.m_coralClaw.clawCommand(ClawState.CLOSE, ClawPosition.HANDOFF));
         break;
       case CoralAuto:
         /**
