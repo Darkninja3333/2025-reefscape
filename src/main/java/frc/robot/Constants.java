@@ -248,10 +248,10 @@ public final class Constants {
     // TODO: modify angles and speeds
 
     // elbow angles in º
-    public static final double kHandoffAngle = 0.0;
-    public static final double kIntakeAngle = 0.0;
+    public static final double kHandoffAngle = 90;
+    public static final double kIntakeAngle = 15;
 
-    // wrist angles
+    // wrist angles in motor rotations
     public static final double Openposition = 0.6;
     public static final double Closedposition = 0.0;
   }
@@ -334,8 +334,9 @@ public final class Constants {
     public static final int kCoralDumperRightServoID = 9;
 
     // sensor ids
-    public static final int kCoralShooterBeambreakID = 0;
-    public static final int kElevatorLimitSwitch = 0;
+    public static final int kCoralShooterBeambreakID = 21;
+    public static final int kElevatorLimitSwitch = 22;
+    public static final int kCoralAutoIntakeBeamBrake = 23;
 
     public static final InvertedValue kElevatorMotorInversion = InvertedValue.Clockwise_Positive;
     // no clue if this is a good value but it should be fine to start
@@ -348,7 +349,7 @@ public final class Constants {
     public static final double kElevatorMotorCurrentLimit = 10.0; // TO BE TESTED
     public static final InvertedValue kRightElevatorMotorNotInverted =
         InvertedValue.Clockwise_Positive;
-    public static final int kFollowerId = 0;
+    public static final int kFollowerId = 34;
     public static final double kElevatorDown = 0.0;
     public static final double kElevatorL1 = 0.0;
     public static final double kElevatorL2 = 0.0;

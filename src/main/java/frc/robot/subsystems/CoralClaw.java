@@ -7,11 +7,10 @@ package frc.robot.subsystems;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 import com.revrobotics.spark.SparkMax;
 import edu.wpi.first.math.controller.PIDController;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
-// import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-// import frc.robot.Constants.AlgaeCoralStand;
 import frc.robot.Constants;
 
 /** 2 neo one controls elevation and one closes pinchers * */
@@ -37,6 +36,7 @@ public class CoralClaw extends SubsystemBase {
   private PIDController m_PID = new PIDController(kp, ki, kd);
   private double m_setpoint = Constants.CoralIntakeVariables.kIntakeAngle;
   private double m_setpointangle = Constants.CoralIntakeVariables.Closedposition;
+  private DigitalInput m_beamBrake = new DigitalInput(Constants.SubsystemInfo.kCoralAutoIntakeBeamBrake);
 
   public Command clawCommand(ClawState state, ClawPosition position) {
     m_PID.setPID(
@@ -54,7 +54,7 @@ public class CoralClaw extends SubsystemBase {
         });
   }
 
-  public void ClawAngle(ClawState state) {
+  private void ClawAngle(ClawState state) {
     switch (state) {
       case OPEN:
         m_setpointangle = Constants.CoralIntakeVariables.Openposition;
@@ -67,7 +67,7 @@ public class CoralClaw extends SubsystemBase {
     }
   }
 
-  public void ClawPosition(ClawPosition position) {
+  private void ClawPosition(ClawPosition position) {
     switch (position) {
       case HANDOFF:
         m_setpoint = Constants.CoralIntakeVariables.kHandoffAngle;
@@ -80,6 +80,15 @@ public class CoralClaw extends SubsystemBase {
       default:
         break;
     }
+  }
+
+  /**
+   * this checks if the coral claw has a coral
+   *
+   * @return the output of the beam break sensor false if the coral isn't there true if it is
+   */
+  public boolean hasCoral() {
+    return m_beamBrake.get();
   }
 
   @Override
